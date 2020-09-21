@@ -247,6 +247,6 @@ module ActiveRecord
       end
     end
 
-    alias_method_chain :build_arel, :extensions
+    alias_method :build_arel, :extensions
   end
 end
