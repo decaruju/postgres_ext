@@ -21,7 +21,11 @@ module Arel
         if column && column.respond_to?(:array) && column.array
           quoted o, a
         else
-          o.empty? ? 'NULL' : o.map { |x| visit x }.join(', ')
+          o.empty? ? 'NULL' : o.each_with_index.map do |x, index|
+            visit x, a
+            a << ", " if index != o.size - 1
+          end
+          a
         end
       end
 
