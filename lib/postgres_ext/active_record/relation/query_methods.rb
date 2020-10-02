@@ -182,7 +182,7 @@ module ActiveRecord
     end
 
     def build_arel_with_extensions(_aliases)
-      arel = build_arel_without_extensions
+      arel = build_arel_without_extensions(_aliases)
 
       build_with(arel)
 
